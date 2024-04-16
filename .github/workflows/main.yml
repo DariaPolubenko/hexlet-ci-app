@@ -1,1 +1,18 @@
-l
+name: hexlet-ci-app
+
+on: 
+  - push
+  - pull_request
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+      - run: npm install
+      - run: make setup
+      - run: make start
+      - run: make test
+      - run: make lint
+      
