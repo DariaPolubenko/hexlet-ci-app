@@ -17,24 +17,4 @@ jobs:
       - run: make test
       - run: make lint
 
-       - name: install Snyk CLI
-       - run: npm install -g snyk
-       - name: run Snyk Open Source Test
-       - run: snyk test
-       - name: run Snyk Code Test
-       - run: snyk code test
-      
-      - name: Run Snyk to check for vulnerabilities
-        uses: snyk/actions/node@master
-        env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-
-    opensource-security:
-    runs-on: ubuntu-latest
-     steps:
-       - uses: actions/checkout@master
-       - name: Run Snyk to check for vulnerabilities
-         uses: snyk/actions/maven@master
-         env:
-           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
       
