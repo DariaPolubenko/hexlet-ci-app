@@ -1,4 +1,4 @@
-- uses: hexlet-ci-app
+name: hexlet-ci-app
 
 on: 
   - push
