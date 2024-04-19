@@ -13,3 +13,11 @@ jobs:
       - run: make setup
       - run: make test
       - run: make lint
+      
+  test:
+    needs: build
+      # - uses: actions/checkout@master
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/node@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
