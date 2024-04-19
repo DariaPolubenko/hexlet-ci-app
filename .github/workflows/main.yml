@@ -15,7 +15,7 @@ jobs:
       - run: make lint
   
   build-shyk:
-    needs: build
+    needs: build-base
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
