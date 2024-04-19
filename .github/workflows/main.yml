@@ -14,7 +14,7 @@ jobs:
       - run: make test
       - run: make lint
       
-  test:
+  test-shyk:
     needs: build
       # - uses: actions/checkout@master
       - name: Run Snyk to check for vulnerabilities
