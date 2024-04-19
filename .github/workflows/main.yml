@@ -1,29 +1,31 @@
-name: base-test
+name: base-test #название теста
 
-on: 
+on: #когда тест запускается 
   - push
   - pull_request
 
-jobs:
-  build-base:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'npm'
-      - run: make setup
-      - run: make test
-      - run: make lint
+jobs: #тут начинается работа 
+  build-base: #название  
+    runs-on: ubuntu-latest #штука, типа платформы для работы экшена
+    
+    steps: #шаги 
+      - uses: actions/checkout@v4 #клонирует репозиторий
+      - uses: actions/setup-node@v4 #устанавливает node.js - прога, которая работает с js
+        with: 
+          node-version: '20' #условие, что устанавливать надо версию 20
+          cache: 'npm' #тут происходит кэш для менеджера пакетов node.js
+      - run: make setup #команда из Makefile, устанавливает и собирает nmp
+      - run: make test #тестирует nmp
+      - run: make lint #действо с eslint, не до конца поняла, что именно оно делает
   
   build-shyk:
-    if: ${{ always() }}
-    needs: build-base
+    if: ${{ always() }} 
+    needs: build-base #выполнение тестирования с помощью shyk, после выполнения предыдущей команды "build-base"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
-      - uses: snyk/actions/node@master
-        continue-on-error: true # To make sure that SARIF upload gets called
+      - uses: actions/checkout@master #клонирование репозитория, если не ошибаюсь. 
+        #Не до конца понимаю, что означает master (это версия?). И вопрос, нужно ли опять копировать?
+      - uses: snyk/actions/node@master #тут запускается экшен от shyk
+        continue-on-error: true # To make sure that SARIF upload gets called #строка, которая не выдает ошибку, если тесты выдали уязвимости
         env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }} #тут секрутная штука, типа ключа, чтобы сконектиться с shyk
