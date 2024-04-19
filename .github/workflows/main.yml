@@ -14,7 +14,7 @@ jobs:
       - run: make test
       - run: make lint
   
-  build-shyk:
+  build-shykЖ
     if: ${{ always() }}
     needs: build-base
     runs-on: ubuntu-latest
