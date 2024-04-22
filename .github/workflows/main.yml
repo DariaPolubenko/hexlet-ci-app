@@ -26,6 +26,6 @@ jobs: #тут начинается работа
       - uses: actions/checkout@master #клонирование репозитория, если не ошибаюсь. 
         #Не до конца понимаю, что означает master (это версия?). И вопрос, нужно ли опять копировать репозиторий?
       - uses: snyk/actions/node@master #тут запускается экшен от shyk
-        continue-on-error: true # To make sure that SARIF upload gets called #строка, которая не выдает ошибку, если тесты выдали уязвимости
+        continue-on-error: true #строка, которая не выдает ошибку, если тесты выдали уязвимости
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }} #тут секрутная штука, типа ключа, чтобы сконектиться с shyk
