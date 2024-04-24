@@ -15,6 +15,7 @@ jobs: #тут начинается работа
           node-version: '20' #условие, что устанавливать надо версию 20
           cache: 'npm' #тут происходит кэш для менеджера пакетов node.js
       - run: npm install @react-navigation/native @react-navigation/native-stack --force
+      - run: npm audit fix --force
       - run: make setup #команда из Makefile, устанавливает и собирает nmp
       - run: make test #тестирует nmp
       - run: make lint #действо с eslint, не до конца поняла, что именно оно делает
