@@ -14,9 +14,6 @@ jobs: #тут начинается работа
         with: 
           node-version: '20' #условие, что устанавливать надо версию 20
           cache: 'npm' #тут происходит кэш для менеджера пакетов node.js
-          
-      - run: expo doctor
-      - run: expo doctor --fix-dependencies
 
       # - run: npm install @react-navigation/native @react-navigation/native-stack --force 
     
