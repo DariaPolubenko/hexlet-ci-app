@@ -15,6 +15,8 @@ jobs: #тут начинается работа
           node-version: '20' #условие, что устанавливать надо версию 20
           cache: 'npm' #тут происходит кэш для менеджера пакетов node.js
 
+      - run: Update-Package -reinstall    
+
       - run: npm install @react-navigation/native @react-navigation/native-stack --force 
 
       - run: npm install react react-dom
