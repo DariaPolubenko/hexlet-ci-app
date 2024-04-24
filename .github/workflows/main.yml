@@ -15,12 +15,10 @@ jobs: #тут начинается работа
           node-version: '20' #условие, что устанавливать надо версию 20
           cache: 'npm' #тут происходит кэш для менеджера пакетов node.js
 
-      - run: yarn upgrade --latest  
+     # - run: npm install @react-navigation/native @react-navigation/native-stack --force 
 
-      - run: npm install @react-navigation/native @react-navigation/native-stack --force 
-
-      - run: npm install react react-dom
       - run: npm install --save react-router-dom
+      - run: npm install react react-dom
       - run: npm i styled-components
       - run: npm install superagent
      # - run: npm audit fix --force
