@@ -14,13 +14,14 @@ jobs: #тут начинается работа
         with: 
           node-version: '20' #условие, что устанавливать надо версию 20
           cache: 'npm' #тут происходит кэш для менеджера пакетов node.js
+      - run: npm install source-map-url
       - run: npm install @react-navigation/native @react-navigation/native-stack --force 
      
       - run: npm install react react-dom
       - run: npm install --save react-router-dom
       - run: npm i styled-components@5.2.1
       - run: npm install superagent
-      - run: npm audit fix --force
+     # - run: npm audit fix --force
       
       
       - run: make setup #команда из Makefile, устанавливает и собирает nmp
